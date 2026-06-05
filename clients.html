@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clients — Dunixab Creative Studio</title>
+<meta name="description" content="The brands we partner with, what they say, and the work we've delivered at Dunixab Creative Studio.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="clients.html">
+<div class="loader"><div class="lname"><span>CLIENTS</span></div><div class="bar"><i></i></div><div class="lpct">0%</div></div>
+<div class="scroll-prog"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+
+<section class="page-hero">
+  <div class="idx">CLNT</div>
+  <div class="eyebrow reveal">Partnerships</div>
+  <h1 class="h-xl reveal d1">Clients</h1>
+  <p class="lead reveal d2" style="margin-top:24px">The brands who trust us to design with depth — and what they say about working together.</p>
+</section>
+
+<!-- LOGO STRIP -->
+<section class="section logos-sec">
+  <p class="logos-label reveal">Trusted by ambitious brands</p>
+  <div class="logos" id="logos"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="eyebrow reveal">In their words</div>
+  <h2 class="h-lg reveal d1" style="margin-bottom:54px">What clients <span class="italic-serif gold-text">say.</span></h2>
+  <div class="tm-grid" id="tmGrid"></div>
+</section>
+
+<!-- CASE STUDIES -->
+<!-- <section class="section">
+  <div class="eyebrow reveal">Selected engagements</div>
+  <h2 class="h-lg reveal d1" style="margin-bottom:60px">The work we <span class="italic-serif gold-text">delivered.</span></h2>
+  <div class="showcase" id="showcase"></div>
+</section> -->
+
+<section class="section cta" style="text-align:center;padding:150px 5vw">
+  <h2 class="h-xl reveal">Become our<br>next <span class="italic-serif gold-text">success story.</span></h2>
+  <a href="contact.html" class="btn reveal d1" style="margin-top:30px"><span>Start a Project</span><span class="arrow">→</span></a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="bg3d.js"></script>
+<script>
+// logo strip (wordmark style placeholders)
+  const LOGOS=['assets/Face Wellness Logo White.png',
+  'assets/Nirappil Designers & Builders Logo White.png',
+  'assets/QuePixelCo Logo White.png',
+  'assets/Ribamt Logo White.png', 
+  'assets/Snix AI Logo White.png',
+  'assets/Vryntus White Logo.png'];
+  const lg=document.getElementById('logos');
+  LOGOS.forEach((path, i) => {
+    const el = document.createElement('div');
+    el.className = 'logo-item reveal d' + ((i % 3) + 1);
+
+    // Create the image element
+    const img = document.createElement('img');
+    img.src = path;
+    img.alt = `Logo ${i + 1}`;
+    img.style.maxWidth = '35%'; // Prevents the image from overflowing the div
+    img.style.height = 'auto';    // Maintains the original aspect ratio
+
+    // Append the image to the div, then the div to the container
+    el.appendChild(img);
+    lg.appendChild(el);
+  })
+// LOGOS.forEach((n,i)=>{const el=document.createElement('div');el.className='logo-item reveal d'+(i%4+1);el.textContent=n;lg.appendChild(el);});
+
+// testimonials
+const TM=[
+ ['Working with Dunixab felt like adding a senior creative team overnight. The brand they built still turns heads.','Manager, Que Pixel Co.','Founder, Wellness Tech'],
+ ['They thought about every dimension — visuals, motion, even sound. The result felt genuinely premium.','Founder, Nirappil Designers & Builders','Creative Lead, Media'],
+ ['Our product finally looks as good as it works. The UI system they delivered is a joy to build on.','Product Manager, Face Wellness','Product Manager, Fintech'],
+ ['The 3D product visuals let us launch months before manufacturing finished. Indistinguishable from photos.','Manager, Ribamt','Marketing Head, Hardware'],
+ ['Our café and its brand now tell one story. Customers photograph the space constantly.','Chairman, Vryntus','Owner, Hospitality'],
+ ['Responsive, thoughtful and obsessed with detail. Easily the best creative partner we have worked with.','Founder, Snix AI','Host, Podcast Network']
+];
+const tg=document.getElementById('tmGrid');
+TM.forEach(([q,n,r],i)=>{
+ const el=document.createElement('div');el.className=`tm-card glass reveal d${i%3+1}`;
+ el.innerHTML=`<span class="tm-quote">“</span><p class="tm-text">${q}</p><div class="tm-by"><strong>${n}</strong></div>`;
+ tg.appendChild(el);
+});
+
+// case studies
+const CASES=[
+ {t:'Aether',cat:'Branding · UI/UX',col:'#8b6dff',ic:'◈',
+  brief:'A wellness-tech startup needed an identity that felt calm yet modern, plus an app experience to match.',
+  did:['Naming & logo system','Color & type guidelines','App UI design system','Motion identity'],
+  res:'A cohesive brand that lifted launch-week sign-ups and set a confident, premium tone.'},
+ {t:'Atlas',cat:'3D · Motion',col:'#d8b06a',ic:'◉',
+  brief:'A hardware company wanted photoreal product visuals before manufacturing was complete.',
+  did:['3D modeling & materials','Studio lighting & render','360° turntable loops','Hero key-art'],
+  res:'Marketing launched ahead of production using fully CG assets — indistinguishable from photography.'},
+ {t:'Habitat',cat:'Interior · Graphic',col:'#46e0cd',ic:'▤',
+  brief:'A new café needed a spatial concept and signage that carried one warm, tactile story.',
+  did:['Spatial concept & moodboard','Material & lighting plan','Signage & menu system','3D render walkthrough'],
+  res:'A space and brand that read as one — instantly photogenic and on-message.'},
+ {t:'Verve',cat:'Motion · Sound',col:'#ff7567',ic:'➤',
+  brief:'A media brand wanted a signature sting and title pack with matching audio.',
+  did:['Animated logo sting','Title & lower-third pack','Kinetic typography','Original score & mix'],
+  res:'A recognizable on-air signature used across every video the brand publishes.'},
+];
+const sc=document.getElementById('showcase');
+CASES.forEach((c,i)=>{
+ const el=document.createElement('div');el.className='case reveal';el.style.setProperty('--c',c.col);
+ el.innerHTML=`
+  <div class="case-vis ${i%2?'right':''}"><div class="case-orb"><span>${c.ic}</span></div><span class="case-num">0${i+1}</span></div>
+  <div class="case-body">
+    <span class="tag">${c.cat}</span>
+    <h2 class="h-lg">${c.t}</h2>
+    <p class="lead" style="margin:18px 0">${c.brief}</p>
+    <h5 class="case-h5">What we delivered</h5>
+    <ul class="case-list">${c.did.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <h5 class="case-h5">Outcome</h5>
+    <p class="muted">${c.res}</p>
+  </div>`;
+ sc.appendChild(el);
+});
+</script>
+<script src="partials.js"></script>
+<script src="app.js"></script>
+<script>initBG3D({mode:'crystal',hero:false});</script>
+
+<style>
+.logos-sec{text-align:center}
+.logos-label{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream-faint);margin-bottom:44px}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-items:center}
+@media(max-width:880px){.logos{grid-template-columns:repeat(2,1fr);gap:24px}}
+.logo-item{font-family:var(--grotesk);font-weight:900;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:-.02em;color:var(--cream-faint);text-align:center;padding:22px 10px;border:1px solid var(--line);border-radius:14px;transition:all .45s var(--ease)}
+.logo-item:hover{color:var(--gold);border-color:var(--line-2);transform:translateY(-5px);background:rgba(216,176,106,.04)}
+
+.tm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:880px){.tm-grid{grid-template-columns:1fr}}
+.tm-card{padding:38px 32px;position:relative;transition:transform .5s var(--ease),border-color .5s}
+.tm-card:hover{transform:translateY(-8px);border-color:var(--line-2)}
+.tm-quote{font-family:var(--serif);font-size:4rem;line-height:.6;color:var(--gold);display:block;margin-bottom:8px;opacity:.6}
+.tm-text{font-family:var(--display);font-size:1.18rem;font-weight:400;line-height:1.5;margin-bottom:26px}
+.tm-by strong{font-family:var(--grotesk);font-weight:900;display:block;color:var(--gold)}
+.tm-by span{font-size:.82rem;color:var(--cream-dim)}
+
+.showcase{display:flex;flex-direction:column;gap:120px}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:880px){.case{grid-template-columns:1fr;gap:34px}.case-vis.right{order:-1}}
+.case-vis{aspect-ratio:1;border:1px solid var(--line);border-radius:24px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--c) 25%,transparent),transparent 72%)}
+.case-vis.right{order:2}
+.case-orb{width:200px;height:200px;border-radius:50%;border:1px solid color-mix(in srgb,var(--c) 50%,transparent);display:flex;align-items:center;justify-content:center;box-shadow:0 0 100px color-mix(in srgb,var(--c) 50%,transparent);animation:spin 18s linear infinite}
+.case-orb span{font-size:5rem;color:var(--c);filter:drop-shadow(0 0 30px var(--c));animation:spin 18s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.case-num{position:absolute;top:20px;left:24px;font-family:var(--grotesk);font-weight:900;font-size:2.4rem;color:rgba(246,243,236,.08)}
+.case-h5{font-family:var(--body);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:24px 0 12px;font-weight:700}
+.case-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.case-list li{font-size:.9rem;border:1px solid var(--line-2);padding:8px 16px;border-radius:100px;color:var(--cream-dim)}
+</style>
+</body>
+</html>

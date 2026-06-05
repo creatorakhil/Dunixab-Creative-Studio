@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services — Dunixab Creative Studio</title>
+<meta name="description" content="Nine creative disciplines from Dunixab Creative Studio: graphic design, branding, UI/UX, video, motion, animation, 3D, interiors and sound.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="services.html">
+<div class="loader"><div class="lname"><span>SERVICES</span></div><div class="bar"><i></i></div><div class="lpct">0%</div></div>
+<div class="scroll-prog"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+
+<section class="page-hero">
+  <div class="idx">SERV</div>
+  <div class="eyebrow reveal">What we do</div>
+  <h1 class="h-xl reveal d1">Capabilities</h1>
+  <p class="lead reveal d2" style="margin-top:24px">Nine disciplines under one roof — so your brand stays coherent from the first sketch to the final surface.</p>
+</section>
+
+<section class="section">
+  <div class="svc-cards" id="svcCards"></div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Design</span><span class="fill">✦</span><span>Motion</span><span class="fill">✦</span><span>Space</span><span class="fill">✦</span><span>Sound</span><span class="fill">✦</span>
+    <span>Design</span><span class="fill">✦</span><span>Motion</span><span class="fill">✦</span><span>Space</span><span class="fill">✦</span><span>Sound</span><span class="fill">✦</span>
+  </div>
+</div>
+
+<section class="section cta" style="text-align:center;padding:150px 5vw">
+  <div class="eyebrow reveal" style="justify-content:center">Bundle &amp; save time</div>
+  <h2 class="h-lg reveal d1">Not sure which you need?<br>We'll <span class="italic-serif gold-text">scope it</span> with you.</h2>
+  <a href="contact.html" class="btn reveal d2" style="margin-top:30px"><span>Request a Quote</span><span class="arrow">→</span></a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="bg3d.js"></script>
+<script>
+const S=[
+ ['01','Graphic Design','Editorial layouts, posters, packaging, social systems and print-ready collateral built on rigorous typography and grid logic.',['Posters','Packaging','Editorial','Social Kits'],'#d4a857'],
+ ['02','Branding','Complete identity systems — naming, logo, palette, type, voice and guidelines — designed to be recognized and remembered.',['Logo','Guidelines','Strategy','Rebrand'],'#7c5cff'],
+ ['03','UI / UX Design','Research-led interfaces and product flows. Wireframes, prototypes and polished design systems for web and mobile.',['Web','Mobile','Prototypes','Design Systems'],'#3ad6c4'],
+ ['04','Video Editing','Story-first edits with color grading, sound and pacing — from social cuts to long-form brand films.',['Reels','Brand Films','Grading','Trailers'],'#ff6b5e'],
+ ['05','Motion Graphics','Kinetic typography, animated logos and explainer visuals that turn static brands into movement.',['Logo Animation','Explainers','Titles','Loops'],'#e8c98a'],
+ ['06','Animation','Character and frame-by-frame animation with personality — 2D storytelling that connects.',['2D','Character','Frame-by-frame','Storyboard'],'#7c5cff'],
+ ['07','3D Modeling','Product visualization, environments and assets rendered with cinematic light and material detail.',['Product Viz','Scenes','Assets','Render'],'#3ad6c4'],
+ ['08','Interior Designing','Spatial concepts, moodboards and environments that translate a brand into a physical place.',['Concept','Space Planning','Moodboards','Render'],'#d4a857'],
+ ['09','Sound Recording & Mixing','Voiceover, score, foley and mastered mixes that complete every visual experience.',['Voiceover','Score','Mixing','Mastering'],'#7c5cff'],
+ ['10','3D ANIMATION','We turn ideas into motion. From product visuals to character animation and motion graphics, we create dynamic 3D content that captivates your audience and brings your story to life.',['3D','Character','Dynamic','Storyboard'],'#3ad6c4'],
+ ['11','WEB DESIGN & DEVELOPMENT','We create stunning, user-friendly website designs that capture your brand\'s identity and turn visitors into customers.',['Design','Development','Data Base','Hosting'],'#ff6b5e'],
+ ['12','DIGITAL MARKETING','We grow your brand online through smart strategies across SEO, social media, and paid ads—driving traffic, engagement, and real results.',['SEO','Social Media Marketing','Content Marketing','Google Ads', 'Brand Strategy', 'Analytics'],'#e8c98a']
+];
+const c=document.getElementById('svcCards');
+S.forEach(([n,t,d,tags,col],i)=>{
+ const el=document.createElement('div');el.className=`svc-c reveal d${i%3+1}`;el.style.setProperty('--c',col);
+ el.innerHTML=`<div class="svc-c-top"><span class="svc-c-n">${n}</span><div class="svc-c-glow"></div></div>
+ <h3 class="h-md">${t}</h3><p class="muted">${d}</p>
+ <div class="svc-c-tags">${tags.map(x=>`<span class="tag">${x}</span>`).join('')}</div>`;
+ c.appendChild(el);
+});
+</script>
+<script src="partials.js"></script>
+<script src="app.js"></script>
+<script>initBG3D({mode:'field',hero:true});</script>
+
+<style>
+.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:980px){.svc-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.svc-cards{grid-template-columns:1fr}}
+.svc-c{border:1px solid var(--line);border-radius:18px;padding:30px;background:var(--ink-2);position:relative;overflow:hidden;transition:transform .5s,border-color .5s}
+.svc-c:hover{transform:translateY(-8px);border-color:var(--c)}
+.svc-c-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.svc-c-n{font-family:var(--grotesk);font-weight:900;font-size:1.6rem;color:transparent;-webkit-text-stroke:1px var(--c)}
+.svc-c-glow{width:50px;height:50px;border-radius:50%;background:radial-gradient(circle,var(--c),transparent 70%);opacity:.5;filter:blur(4px);transition:opacity .4s}
+.svc-c:hover .svc-c-glow{opacity:1}
+.svc-c h3{margin-bottom:14px}
+.svc-c p{font-size:.95rem;margin-bottom:20px}
+.svc-c-tags{display:flex;flex-wrap:wrap}
+</style>
+</body>
+</html>

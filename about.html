@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About &amp; Talents — Dunixab Creative Studio</title>
+<meta name="description" content="The story, values and talents behind Dunixab Creative Studio in Neyyattinkara, Kerala.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="about.html">
+<div class="loader"><div class="lname"><span>ABOUT</span></div><div class="bar"><i></i></div><div class="lpct">0%</div></div>
+<div class="scroll-prog"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+
+<section class="page-hero">
+  <div class="idx">ABT</div>
+  <div class="eyebrow reveal">Who we are</div>
+  <h1 class="h-xl reveal d1">About &amp;<br>Talents</h1>
+  <p class="lead reveal d2" style="margin-top:24px">A young, ambitious studio born in Kerala — building work with depth, dimension and care.</p>
+</section>
+
+<!-- STORY -->
+<section class="section story">
+  <div class="story-grid">
+    <div>
+      <div class="eyebrow reveal">Our story</div>
+      <h2 class="h-lg reveal d1">Founded in <span class="italic-serif gold-text">October 2024.</span></h2>
+    </div>
+    <div class="reveal d2">
+      <p class="lead">Dunixab Creative Studio began with a simple conviction: that great design should feel intentional in every dimension — visual, motion, spatial and sonic. From our base in Neyyattinkara, Trivandrum, we partner with brands who want more than decoration; they want craft that earns attention and drives business.</p>
+      <p class="lead" style="margin-top:18px">We're small by design, which means your project gets senior care from brief to delivery — and a team that treats your goals as our own.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section story">
+  <div class="story-grid">
+    <div>
+      <div class="eyebrow reveal">A Message from Our CEO</div>
+      <!-- <h2 class="h-lg reveal d1"> <span class="italic-serif gold-text">AKHIL R S Founder & CEO</span></h2> -->
+    </div>
+    <div class="reveal d2">
+      <p class="lead">When we started this company, we believed that great design is never just about how something looks—it's about how it works, how it feels, and how it connects with the people who experience it.
+Every project we take on is a partnership. We listen first, then we create. Our team brings together strategy, creativity, and craft to build designs that don't just meet expectations, but redefine them. Whether it's a brand identity, a digital product, or a complete visual experience, our goal remains the same: to deliver work that makes a real difference for our clients.
+I'm proud of the talented people behind every pixel, every concept, and every solution we produce. Their passion is the heartbeat of this company, and it's what allows us to turn ambitious ideas into reality.
+To our clients—thank you for trusting us with your vision. To those just discovering us—we'd love to show you what thoughtful, purposeful design can do.
+Let's create something remarkable together.</p>
+      <p class="lead" style="margin-top:18px">AKHIL R S, Founder & CEO</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section">
+  <div class="eyebrow reveal">What we believe</div>
+  <h2 class="h-lg reveal d1" style="margin-bottom:50px">Principles with <span class="italic-serif gold-text">spine.</span></h2>
+  <div class="values" id="values"></div>
+</section>
+
+<!-- TALENTS -->
+<section class="section">
+  <div class="eyebrow reveal">Our talents</div>
+  <h2 class="h-lg reveal d1" style="margin-bottom:16px">A team that spans <span class="italic-serif gold-text">every craft.</span></h2>
+  <p class="lead reveal d2" style="margin-bottom:50px">Specialists across nine disciplines, working as one studio.</p>
+  <div class="talents" id="talents"></div>
+</section>
+
+<!-- STATS -->
+<section class="section stats-band">
+  <div class="stat reveal"><strong>9</strong><span>Creative disciplines</span></div>
+  <div class="stat reveal d1"><strong>2024</strong><span>Year established</span></div>
+  <div class="stat reveal d2"><strong>100%</strong><span>Senior-led projects</span></div>
+  <div class="stat reveal d3"><strong>1</strong><span>Studio, end to end</span></div>
+</section>
+
+<section class="section cta" style="text-align:center;padding:150px 5vw">
+  <h2 class="h-lg reveal">Like how we <span class="italic-serif gold-text">think?</span><br>Let's work together.</h2>
+  <a href="contact.html" class="btn reveal d1" style="margin-top:28px"><span>Get in Touch</span><span class="arrow">→</span></a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="bg3d.js"></script>
+<script>
+const V=[
+ ['Depth over decoration','We add dimension and motion only when it deepens the message — never as noise.'],
+ ['Craft is non-negotiable','Spacing, type, light and timing are obsessed over until they feel inevitable.'],
+ ['Strategy first','Beautiful work that ignores the goal is just art. We design for outcomes.'],
+ ['One coherent voice','Brand, screen, space and sound — all speaking the same language.']
+];
+const vEl=document.getElementById('values');
+V.forEach(([t,d],i)=>{const el=document.createElement('div');el.className='value reveal d'+(i%4+1);
+ el.innerHTML=`<span class="value-n">0${i+1}</span><h3 class="h-md">${t}</h3><p class="muted">${d}</p>`;vEl.appendChild(el);});
+
+const T=[
+ ['Brand &amp; Graphic','Identity, type, print','#d4a857','◆'],
+ ['UI / UX','Product & interface','#3ad6c4','▣'],
+ ['Motion &amp; Animation','Movement & story','#ff6b5e','➤'],
+ ['Video','Edit & grade','#e8c98a','▶'],
+ ['3D','Model & render','#7c5cff','◉'],
+ ['Interior','Space & concept','#3ad6c4','▤'],
+ ['Sound','Record & mix','#d4a857','◐'],
+ ['Direction','Strategy & art direction','#ff6b5e','✦'],
+];
+const tEl=document.getElementById('talents');
+T.forEach(([t,d,col,ic],i)=>{const el=document.createElement('div');el.className='talent reveal hoverable d'+(i%3+1);el.style.setProperty('--c',col);
+ el.innerHTML=`<span class="talent-ic">${ic}</span><h3>${t}</h3><p class="muted">${d}</p>`;tEl.appendChild(el);});
+</script>
+<script src="partials.js"></script>
+<script src="app.js"></script>
+<script>initBG3D({mode:'field',hero:true});</script>
+
+<style>
+.story-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:50px}
+@media(max-width:880px){.story-grid{grid-template-columns:1fr;gap:24px}}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:980px){.values{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.values{grid-template-columns:1fr}}
+.value{border-top:2px solid var(--gold);padding:24px 0 0}
+.value-n{font-family:var(--grotesk);font-weight:900;font-size:1.4rem;color:var(--gold);display:block;margin-bottom:12px}
+.value h3{margin-bottom:12px;font-size:1.4rem}
+
+.talents{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:980px){.talents{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.talents{grid-template-columns:1fr}}
+.talent{border:1px solid var(--line);border-radius:18px;padding:30px;background:var(--ink-2);transition:transform .5s,border-color .5s;text-align:center}
+.talent:hover{transform:translateY(-8px);border-color:var(--c)}
+.talent-ic{font-size:2.6rem;color:var(--c);filter:drop-shadow(0 0 20px var(--c));display:block;margin-bottom:16px}
+.talent h3{font-size:1.25rem;margin-bottom:8px}
+.talent p{font-size:.85rem}
+
+.stats-band{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2)}
+@media(max-width:780px){.stats-band{grid-template-columns:repeat(2,1fr);gap:40px}}
+.stat{text-align:center}
+.stat strong{font-family:var(--grotesk);font-weight:900;font-size:clamp(2.6rem,6vw,4.5rem);color:var(--gold);display:block;line-height:1}
+.stat span{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)}
+</style>
+</body>
+</html>

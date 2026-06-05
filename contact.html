@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Dunixab Creative Studio</title>
+<meta name="description" content="Get in touch with Dunixab Creative Studio — Neyyattinkara, Trivandrum, Kerala. Call, email or message us.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="contact.html">
+<div class="loader"><div class="lname"><span>CONTACT</span></div><div class="bar"><i></i></div><div class="lpct">0%</div></div>
+<div class="scroll-prog"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+
+<section class="page-hero">
+  <div class="idx">SAY HI</div>
+  <div class="eyebrow reveal">Let's talk</div>
+  <h1 class="h-xl reveal d1">Contact</h1>
+  <p class="lead reveal d2" style="margin-top:24px">Tell us about your idea. We'll reply with how we'd bring it to life.</p>
+</section>
+
+<section class="section contact-wrap">
+  <div class="contact-grid">
+    <!-- form -->
+    <div class="form-card reveal">
+      <h2 class="h-md" style="margin-bottom:8px">Start a project</h2>
+      <p class="muted" style="margin-bottom:28px">Fields marked * are required.</p>
+      <div class="field"><label>Name *</label><input id="f-name" type="text" placeholder="Your name"></div>
+      <div class="field"><label>Email *</label><input id="f-email" type="email" placeholder="you@email.com"></div>
+      <div class="field"><label>Service of interest</label>
+        <select id="f-service">
+          <option>Graphic Design</option><option>Branding</option><option>UI/UX Design</option>
+          <option>Video Editing</option><option>Motion Graphics</option><option>Animation</option>
+          <option>3D Modeling</option><option>Interior Designing</option><option>Sound Recording &amp; Mixing</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="field"><label>Tell us about the project *</label><textarea id="f-msg" rows="4" placeholder="A few lines about what you need…"></textarea></div>
+      <button class="btn" id="send" style="width:100%;justify-content:center"><span>Send via Email</span><span class="arrow">→</span></button>
+      <p class="form-note" id="note"></p>
+      <p class="muted" style="font-size:.82rem;margin-top:14px">Prefer chat? <a href="https://wa.me/message/OYCL64TSREVHD1" target="_blank" style="color:var(--gold)">Message us on WhatsApp →</a></p>
+    </div>
+
+    <!-- details -->
+    <div class="details">
+      <div class="reveal d1">
+        <h5 class="d-h5">Studio</h5>
+        <p class="d-big">Neyyattinkara,<br>Trivandrum,<br>Kerala, India</p>
+      </div>
+      <div class="reveal d2">
+        <h5 class="d-h5">Call</h5>
+        <a href="tel:+919249536897" class="d-link">+91 92495 36897</a>
+      </div>
+      <div class="reveal d3">
+        <h5 class="d-h5">Email</h5>
+        <a href="mailto:business@dunixabcreative.com" class="d-link">business@dunixabcreative.com</a>
+      </div>
+      <div class="reveal d4">
+        <h5 class="d-h5">Follow</h5>
+        <div class="c-socials" id="csoc"></div>
+      </div>
+      <div class="reveal d4 hours-card">
+        <h5 class="d-h5">Established</h5>
+        <p class="muted">March 2024 · A creative studio building work with dimension.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="bg3d.js"></script>
+<script>
+// social links
+const SOC=[
+ ['Facebook','https://www.facebook.com/profile.php?id=61590229095671'],
+ ['Instagram','https://www.instagram.com/dunixabcreative'],
+ ['Twitter','https://x.com/dunixabcreative'],
+ ['WhatsApp','https://wa.me/message/OYCL64TSREVHD1']
+];
+const cs=document.getElementById('csoc');
+SOC.forEach(([n,u])=>{const a=document.createElement('a');a.href=u;a.target='_blank';a.className='c-soc hoverable';a.textContent=n;cs.appendChild(a);});
+
+// form -> mailto compose
+const send=document.getElementById('send'),note=document.getElementById('note');
+send.addEventListener('click',()=>{
+ const n=document.getElementById('f-name').value.trim();
+ const e=document.getElementById('f-email').value.trim();
+ const s=document.getElementById('f-service').value;
+ const m=document.getElementById('f-msg').value.trim();
+ if(!n||!e||!m){note.textContent='Please fill in name, email and a short message.';note.style.color='var(--coral)';return;}
+ const subject=encodeURIComponent(`New project enquiry — ${s} — ${n}`);
+ const body=encodeURIComponent(`Name: ${n}\nEmail: ${e}\nService: ${s}\n\n${m}`);
+ window.location.href=`mailto:business@dunixabcreative.com?subject=${subject}&body=${body}`;
+ note.textContent='Opening your email app… if nothing happens, write to business@dunixabcreative.com.';
+ note.style.color='var(--gold)';
+});
+</script>
+<script src="partials.js"></script>
+<script src="app.js"></script>
+<script>initBG3D({mode:'crystal',hero:true});</script>
+
+<style>
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:start}
+@media(max-width:880px){.contact-grid{grid-template-columns:1fr;gap:40px}}
+.form-card{border:1px solid var(--line);border-radius:22px;padding:40px;background:var(--ink-2)}
+@media(max-width:480px){.form-card{padding:26px}}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:700}
+.field input,.field select,.field textarea{width:100%;background:var(--ink);border:1px solid var(--line-2);border-radius:12px;padding:15px 16px;color:var(--cream);font-family:var(--body);font-size:.98rem;transition:border-color .3s;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.field select{cursor:pointer}
+.form-note{margin-top:16px;font-size:.85rem}
+.details{display:flex;flex-direction:column;gap:34px}
+.d-h5{font-family:var(--body);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:700}
+.d-big{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1.2}
+.d-link{font-family:var(--display);font-size:clamp(1.1rem,2vw,1.5rem);transition:color .3s}
+.d-link:hover{color:var(--gold)}
+.c-socials{display:flex;flex-wrap:wrap;gap:10px}
+.c-soc{border:1px solid var(--line-2);padding:10px 18px;border-radius:100px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;transition:all .3s}
+.c-soc:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.hours-card{border-top:1px solid var(--line);padding-top:24px}
+</style>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery — Dunixab Creative Studio</title>
+<meta name="description" content="A curated gallery of branding, UI/UX, motion, 3D and spatial work by Dunixab Creative Studio.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="gallery.html">
+<div class="loader"><div class="lname"><span>GALLERY</span></div><div class="bar"><i></i></div><div class="lpct">0%</div></div>
+<div class="scroll-prog"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+
+<section class="page-hero">
+  <div class="idx">PORT</div>
+  <div class="eyebrow reveal">Selected projects</div>
+  <h1 class="h-xl reveal d1">Gallery</h1>
+  <p class="lead reveal d2" style="margin-top:24px">A cross-section of our craft across every discipline. Tilt, hover, explore.</p>
+</section>
+
+<section class="section">
+  <div class="filters reveal" id="filters"></div>
+  <div class="port-grid" id="portGrid"></div>
+</section>
+
+<section class="section cta" style="text-align:center;padding:140px 5vw">
+  <h2 class="h-lg reveal">Your project could be<br>the <span class="italic-serif gold-text">next one</span> here.</h2>
+  <a href="contact.html" class="btn reveal d1" style="margin-top:28px"><span>Start a Project</span><span class="arrow">→</span></a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="bg3d.js"></script>
+<script>
+const P=[
+ ['Nirappil','Branding','Identity for a construction company','#7c5cff','◈'],
+ ['Skill Earn','UI / UX','LMS dashboard & Mobile app','#3ad6c4','▣'],
+ ['Face Wellness','WEB','Dynamic & responsive website','#ff6b5e','➤'],
+ ['Ribamt','3D','3D animated introduction video','#d4a857','◉'],
+ ['Snix AI','Motion','Animated motion posters','#e8c98a','✦'],
+ ['Que Pixel Co','Interior','Studio interior concept & Render','#7c5cff','▤'],
+ ['CSI SKD','Graphic','Seasonal posters & print system','#3ad6c4','◐'],
+ ['Vryntus','MARKETING','Marketing strategy & analytics','#ff6b5e','❂'],
+ ['Liberator','Sound','Sound effects for gaming experience','#d4a857','◆'],
+];
+const cats=['All','Branding','UI / UX','Motion','3D','Graphic','Interior','Sound','Animation', 'WEB', 'MARKETING'];
+const fEl=document.getElementById('filters');
+cats.forEach((c,i)=>{const b=document.createElement('button');b.className='filter-btn'+(i===0?' active':'');b.textContent=c;b.dataset.c=c;fEl.appendChild(b);});
+
+const grid=document.getElementById('portGrid');
+function render(filter){
+ grid.innerHTML='';
+ P.filter(p=>filter==='All'||p[1]===filter).forEach((p,i)=>{
+  const [t,cat,d,col,ic]=p;
+  const el=document.createElement('div');el.className='port-card reveal hoverable d'+(i%3+1);el.style.setProperty('--c',col);
+  el.innerHTML=`<div class="port-inner"><div class="port-vis"><span class="port-ic">${ic}</span><span class="port-num">0${i+1}</span></div>
+  <div class="port-body"><div class="port-meta"><h3 class="h-md">${t}</h3><span class="tag">${cat}</span></div><p class="muted">${d}</p></div></div>`;
+  grid.appendChild(el);
+ });
+ requestAnimationFrame(()=>grid.querySelectorAll('.reveal').forEach(e=>e.classList.add('in')));
+ attachTilt();
+}
+function attachTilt(){
+ const ring=document.querySelector('.cursor-ring'),dot=document.querySelector('.cursor');
+ grid.querySelectorAll('.port-card').forEach(card=>{
+  const inner=card.querySelector('.port-inner');
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-0.5;const y=(e.clientY-r.top)/r.height-0.5;
+   inner.style.transform=`rotateY(${x*14}deg) rotateX(${-y*14}deg) translateZ(20px)`;});
+  card.addEventListener('mouseenter',()=>{if(ring){ring.classList.add('view');ring.setAttribute('data-l','VIEW');}});
+  card.addEventListener('mouseleave',()=>{inner.style.transform='';if(ring)ring.classList.remove('view');});
+ });
+}
+fEl.addEventListener('click',e=>{if(!e.target.classList.contains('filter-btn'))return;
+ fEl.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');render(e.target.dataset.c);});
+render('All');
+</script>
+<script src="partials.js"></script>
+<script src="app.js"></script>
+<script>initBG3D({mode:'crystal',hero:false});</script>
+
+<style>
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:50px}
+.filter-btn{font-family:var(--body);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:11px 20px;border-radius:100px;border:1px solid var(--line-2);background:transparent;color:var(--cream-dim);transition:all .3s}
+.filter-btn:hover{color:var(--cream)}
+.filter-btn.active{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;perspective:1200px}
+@media(max-width:980px){.port-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.port-grid{grid-template-columns:1fr}}
+.port-card{transform-style:preserve-3d}
+.port-inner{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--ink-2);transition:transform .25s ease-out,border-color .4s;transform-style:preserve-3d}
+.port-card:hover .port-inner{border-color:var(--c)}
+.port-vis{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--c) 28%,transparent),transparent 70%);overflow:hidden}
+.port-ic{font-size:4.5rem;color:var(--c);filter:drop-shadow(0 0 30px var(--c));transform:translateZ(40px);animation:bob 5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateZ(40px) translateY(0)}50%{transform:translateZ(40px) translateY(-12px)}}
+.port-num{position:absolute;bottom:14px;right:18px;font-family:var(--grotesk);font-weight:900;font-size:2rem;color:rgba(244,241,234,.08)}
+.port-body{padding:24px}
+.port-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.port-body p{font-size:.92rem}
+</style>
+</body>
+</html>
