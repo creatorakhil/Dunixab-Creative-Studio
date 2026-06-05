@@ -50,10 +50,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024–<span id="yr"></span> Dunixab Creative Studio. Est. March 2024.</span>
+      <span>© 2024–<span id="yr"></span> Dunixab Creative Studio. Est. October 2024.</span>
       <span>Designed with intention in Kerala.</span>
     </div>
-    <div class="big-mark">DUNIXAB</div>
+    <div class="big-mark">DUNIXAB PRIVATE LIMITED</div>
   </footer>`;
 
   document.body.insertAdjacentHTML('afterbegin',navHTML);
