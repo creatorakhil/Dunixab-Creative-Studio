@@ -24,7 +24,7 @@
   <div class="story-grid">
     <div>
       <div class="eyebrow reveal">Our story</div>
-      <h2 class="h-lg reveal d1">Founded in <span class="italic-serif gold-text">October 2024.</span></h2>
+      <h2 class="h-lg reveal d1">Founded in <span class="italic-serif gold-text">October 2025.</span></h2>
     </div>
     <div class="reveal d2">
       <p class="lead">Dunixab Creative Studio began with a simple conviction: that great design should feel intentional in every dimension — visual, motion, spatial and sonic. From our base in Neyyattinkara, Trivandrum, we partner with brands who want more than decoration; they want craft that earns attention and drives business.</p>
@@ -61,14 +61,14 @@ Let's create something remarkable together.</p>
 <section class="section">
   <div class="eyebrow reveal">Our talents</div>
   <h2 class="h-lg reveal d1" style="margin-bottom:16px">A team that spans <span class="italic-serif gold-text">every craft.</span></h2>
-  <p class="lead reveal d2" style="margin-bottom:50px">Specialists across nine disciplines, working as one studio.</p>
+  <p class="lead reveal d2" style="margin-bottom:50px">Specialists across twelve disciplines, working as one studio.</p>
   <div class="talents" id="talents"></div>
 </section>
 
 <!-- STATS -->
 <section class="section stats-band">
-  <div class="stat reveal"><strong>9</strong><span>Creative disciplines</span></div>
-  <div class="stat reveal d1"><strong>2024</strong><span>Year established</span></div>
+  <div class="stat reveal"><strong>12</strong><span>Creative disciplines</span></div>
+  <div class="stat reveal d1"><strong>2025</strong><span>Year established</span></div>
   <div class="stat reveal d2"><strong>100%</strong><span>Senior-led projects</span></div>
   <div class="stat reveal d3"><strong>1</strong><span>Studio, end to end</span></div>
 </section>
@@ -92,14 +92,18 @@ V.forEach(([t,d],i)=>{const el=document.createElement('div');el.className='value
  el.innerHTML=`<span class="value-n">0${i+1}</span><h3 class="h-md">${t}</h3><p class="muted">${d}</p>`;vEl.appendChild(el);});
 
 const T=[
- ['Brand &amp; Graphic','Identity, type, print','#d4a857','◆'],
+ ['Graphic','Social media & Poster','#ff6b5e','✦'],
+ ['Brand','Identity & print','#d4a857','◆'],
  ['UI / UX','Product & interface','#3ad6c4','▣'],
- ['Motion &amp; Animation','Movement & story','#ff6b5e','➤'],
- ['Video','Edit & grade','#e8c98a','▶'],
- ['3D','Model & render','#7c5cff','◉'],
- ['Interior','Space & concept','#3ad6c4','▤'],
- ['Sound','Record & mix','#d4a857','◐'],
- ['Direction','Strategy & art direction','#ff6b5e','✦'],
+ ['Video','Edit & grade','#7c5cff','▶'],
+ ['Motion &amp; Animation','Movement & story','#7c5cff','➤'],
+ ['2D','Story & Drawing','#3ad6c4','◉'],
+ ['3D','Model & render','#d4a857','◐'],
+ ['Interior','Space & concept','#ff6b5e','▤'],
+ ['Sound','Record & mix','#d4a857','◆'],
+ ['Animation','3D & Script','#7c5cff','▶'],
+ ['Web','Building & Hosting','#ff6b5e','◉'],
+ ['Marketing','Strategy & Analytics','#3ad6c4','✦'],
 ];
 const tEl=document.getElementById('talents');
 T.forEach(([t,d,col,ic],i)=>{const el=document.createElement('div');el.className='talent reveal hoverable d'+(i%3+1);el.style.setProperty('--c',col);
